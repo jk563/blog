@@ -1,0 +1,13 @@
+{{ define "page" }}
+<article class="container">
+  <header>
+    <h1>{{ .Title }}</h1>
+    <p>{{if .Date }}{{ .Date | time.Format "2" | humanize }} {{ .Date | time.Format "January 2006" }}{{ end }}</p>
+  </header>
+  {{ .Content }}
+  <p align="center"> -
+    {{ range (.GetTerms "tags") }}
+    <a href="{{ .Permalink }}" >{{ .LinkTitle }}</a> -
+    {{ end }}
+</article>
+{{ end }}

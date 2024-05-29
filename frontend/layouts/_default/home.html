@@ -1,0 +1,19 @@
+{{ define "page" }}
+<article class="container">
+  A collection of musings
+  <section class="feed">
+  {{ with .Site.GetPage "/posts" }}
+    {{ range .RegularPages.Limit 5 }}
+      <a href="{{ .RelPermalink }}">
+        <article>
+          <header>
+            <h3>{{ or .Title .RelPermalink }}</h3>
+          </header>
+          <p>{{ .Params.Description }}</p>
+        </article>
+      </a>
+    {{ end }}
+  {{ end }}
+  </section>
+</article>
+{{ end }}

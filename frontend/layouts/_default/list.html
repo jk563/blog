@@ -1,0 +1,20 @@
+{{ define "page" }}
+<article class="container">
+  <h1>{{ .Title }}</h1>
+  {{ range .Sections }}
+  <h2><a href="{{ .RelPermalink }}">{{ .Title }}</a></h2>
+  {{ end }}
+  <section class="feed">
+  {{ range .Pages }}
+    <a href="{{ .RelPermalink }}">
+      <article>
+        <header>
+          <h2>{{ or .Title .RelPermalink }}</h2>
+        </header>
+        <p>{{ .Params.Description }}</p>
+      </article>
+    </a>
+  {{ end }}
+  </section>
+</article>
+{{ end }}

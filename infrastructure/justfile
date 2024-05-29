@@ -1,0 +1,17 @@
+current_environment := `terraform workspace show`
+
+plan: init
+	terraform plan --var-file {{ current_environment }}.tfvars
+
+init: 
+	terraform init
+
+refresh: init
+	terraform refresh
+
+apply: init
+	terraform apply --var-file {{ current_environment }}.tfvars
+
+workspace ENVIRONMENT:
+	terraform workspace select {{ ENVIRONMENT }}
+

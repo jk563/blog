@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="{{ .Params.description | default `Jamie Kelly\'s blog` }}">
+    <link rel="icon" href="data:,">
+    <link rel="stylesheet" href="{{ .Site.BaseURL }}css/style.css">
+    <title>{{ or .Title .Site.Title }}{{ if ne .Kind "home" }} | {{ .CurrentSection.Title }}{{ end }}</title>
+  </head>
+  <body>
+    <header>
+      <a href="{{ .Site.BaseURL }}">Jamie Kelly</a>
+      <nav>
+        <a href="{{ .Site.BaseURL }}posts.html">Blog</a>
+        <span class="accent">|</span>
+        <a href="{{ .Site.BaseURL }}about.html">About</a>
+      </nav>
+    </header>
+    {{ block "page" . }}{{ end }}
+    <footer>
+      <a href="#">top</a>
+    </footer>
+  </body>
+</html>
